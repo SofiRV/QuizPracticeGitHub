@@ -1,0 +1,80 @@
+<resources>
+    <string name="app_name">Quiz practice</string>
+    <string name="next_button">Next</string>
+    <string name="previous_button">Previous</string>
+    <string name="true_button">True</string>
+    <string name="false_button">False</string>
+    <string name="correct_toast">Correct!</string>
+    <string name="incorrect_toast">Incorrect!</string>
+
+
+    <string-array name="questions_array">
+        <item>Un rayo es cinco veces más caliente que la superficie del sol.</item>
+        <item>La atmósfera de la Tierra está compuesta en un 78% de oxígeno.</item>
+        <item>Los pulpos tienen tres corazones.</item>
+        <item>Un grupo de flamencos se llama "flamboyance" (extravagancia).</item>
+        <item>El hueso más largo del cuerpo humano es el fémur.</item>
+        <item>El mamífero más grande del planeta es el elefante.</item>
+        <item>Canadá inventó la pizza hawaiana.</item>
+        <item>El desierto del Sahara es el desierto más grande de la Tierra.</item>
+        <item>La Estatua de la Libertad fue un regalo de Francia a Estados Unidos.</item>
+        <item>Los primeros Juegos Olímpicos se celebraron en Atenas, Grecia.</item>
+        <item>Las papas fritas son una invención francesa.</item>
+        <item>Cleopatra era egipcia.</item>
+        <item>Leonardo da Vinci pintó la Mona Lisa.</item>
+        <item>La famosa novela La Odisea fue escrita por Homero.</item>
+        <item>La Torre de Pisa siempre ha estado inclinada.</item>
+        <item>La miel nunca se echa a perder.</item>
+        <item>El unicornio es el animal nacional de Escocia.</item>
+        <item>Un murciélago es ciego.</item>
+        <item>El ojo es la única parte del cuerpo humano que está completamente desarrollada desde el nacimiento.</item>
+        <item>Los seres humanos tienen más de cinco sentidos.</item>
+    </string-array>
+
+    <string-array name="answers_array">
+        <item>true</item>
+        <item>false</item>
+        <item>true</item>
+        <item>true</item>
+        <item>true</item>
+        <item>false</item>
+        <item>true</item>
+        <item>false</item>
+        <item>true</item>
+        <item>true</item>
+        <item>true</item>
+        <item>false</item>
+        <item>false</item>
+        <item>true</item>
+        <item>true</item>
+        <item>false</item>
+        <item>true</item>
+        <item>true</item>
+        <item>false</item>
+        <item>true</item>
+        <item>true</item>
+    </string-array>
+
+    <string-array name="images_array">
+        <item>lightning_bolt</item>
+        <item>atmosphere</item>
+        <item>octopus</item>
+        <item>flamingos</item>
+        <item>human_skeleton</item>
+        <item>elephant</item>
+        <item>hawaian_pizza</item>
+        <item>desert</item>
+        <item>statue_of_liberty</item>
+        <item>olympic_games</item>
+        <item>french_fries</item>
+        <item>cleopatra</item>
+        <item>mona_lisa</item>
+        <item>odyssey</item>
+        <item>pisa_tower</item>
+        <item>honey</item>
+        <item>unicorn</item>
+        <item>bat</item>
+        <item>eye</item>
+        <item>senses</item>
+    </string-array>
+</resources>
