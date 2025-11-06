@@ -18,8 +18,6 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    //Preventing repeat answers(deshabilitar botones de respuesta cuando ya el usuario respondio)
-    //Graded quiz(Contar correctas)
 
     private Button trueButton;
     private Button falseButton;
@@ -27,16 +25,23 @@ public class MainActivity extends AppCompatActivity {
     private Button previousButton;
     private TextView questionTextView;
     private ImageView questionImageView;
+    private TextView scoreTextView;
+
     private static final String TAG = "MainActivity";
     private static final String KEY_INDEX = "index";
+    private static final String KEY_ANSWERED_QUESTIONS = "answeredQuestions";
+
+    private static final String KEY_CORRECT_ANSWERS = "correctAnswers";
 
     private ArrayList<Question> questions;
+    private boolean[] answeredQuestions;
 
     String[] questionsArray;
     String[] answersArray;
     String[] imagesArray;
 
     private int currentQuestionIndex = 0;
+    private int correctAnswers=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,10 +58,13 @@ public class MainActivity extends AppCompatActivity {
 
         if (savedInstanceState != null) {
             currentQuestionIndex = savedInstanceState.getInt(KEY_INDEX, 0);
+            answeredQuestions=savedInstanceState.getBooleanArray(KEY_ANSWERED_QUESTIONS);
+            correctAnswers=savedInstanceState.getInt(KEY_CORRECT_ANSWERS, 0);
         }
 
         questionImageView = findViewById(R.id.question_image_view);
         questionTextView = findViewById(R.id.question_text_view);
+        scoreTextView = findViewById(R.id.scoreTextView);
         trueButton = findViewById(R.id.trueButton);
         falseButton = findViewById(R.id.falseButton);
         nextButton = findViewById(R.id.nextButton);
@@ -84,13 +92,19 @@ public class MainActivity extends AppCompatActivity {
             boolean answerTrue = Boolean.parseBoolean(answersArray[i]);
             questions.add(new Question(questionsArray[i], answerTrue));
         }
+        if(savedInstanceState != null){
+            currentQuestionIndex = savedInstanceState.getInt(KEY_INDEX, 0);
+            answeredQuestions=savedInstanceState.getBooleanArray(KEY_ANSWERED_QUESTIONS);
+            correctAnswers=savedInstanceState.getInt(KEY_CORRECT_ANSWERS, 0);
+        }else{
+            answeredQuestions = new boolean[questions.size()];
+        }
 
         updateQuestion();
+        updateScore();
     }
 
     private void updateQuestion() {
-        trueButton.setEnabled(true);
-        falseButton.setEnabled(true);
         String questionText = questions.get(currentQuestionIndex).getText();
         questionTextView.setText(questionText);
         String imageName=imagesArray[currentQuestionIndex];
@@ -100,6 +114,14 @@ public class MainActivity extends AppCompatActivity {
         }else{
             questionImageView.setImageResource(android.R.color.transparent);
         }
+        if(answeredQuestions[currentQuestionIndex]){
+            trueButton.setEnabled(false);
+            falseButton.setEnabled(false);
+        }else{
+            trueButton.setEnabled(true);
+            falseButton.setEnabled(true);
+        }
+        updateScore();
     }
 
     private void checkAnswer(boolean userAnswer) {
@@ -108,12 +130,22 @@ public class MainActivity extends AppCompatActivity {
         int messageResId = 0;
         if (userAnswer == correctAnswer) {
             messageResId = R.string.correct_toast;
+            correctAnswers++;
         } else {
             messageResId = R.string.incorrect_toast;
         }
         Toast.makeText(this, messageResId, Toast.LENGTH_SHORT).show();
+        answeredQuestions[currentQuestionIndex] = true;
         trueButton.setEnabled(false);
         falseButton.setEnabled(false);
+        updateScore();
+
+    }
+
+    private void updateScore() {
+        int totalQuestions = questions.size();
+        String scoreText = "Score: " + correctAnswers + "/" + totalQuestions;
+        scoreTextView.setText(scoreText);
     }
 
     @Override
@@ -121,5 +153,7 @@ public class MainActivity extends AppCompatActivity {
         super.onSaveInstanceState(savedInstanceState);
         Log.i(TAG, "onSaveInstanceState");
         savedInstanceState.putInt(KEY_INDEX, currentQuestionIndex);
+        savedInstanceState.putBooleanArray(KEY_ANSWERED_QUESTIONS, answeredQuestions);
+        savedInstanceState.putInt(KEY_CORRECT_ANSWERS, correctAnswers);
     }
 }
