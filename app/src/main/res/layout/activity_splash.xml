@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/black"
+    tools:context=".MainActivity">
+
+    <!-- TOP TITLE (arriba) -->
+    <TextView
+        android:id="@+id/TextViewTopTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/app_logo_top"
+        android:textColor="@color/logo_color"
+        android:gravity="center"
+        android:textSize="@dimen/logo_size"
+        android:paddingTop="16dp"
+        android:paddingBottom="8dp" />
+
+    <!-- ZONA CENTRAL -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <!-- TABLA CENTRADA -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <TableLayout
+                android:id="@+id/TableLayout01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:stretchColumns="*">
+
+                <TableRow
+                    android:id="@+id/TableRow01"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/ImageView2_Left"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/splash1"
+                        android:scaleType="fitCenter" />
+
+                    <ImageView
+                        android:id="@+id/ImageView2_Right"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/splash2"
+                        android:scaleType="fitCenter" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/TableRow02"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/ImageView3_Left"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/splash3"
+                        android:scaleType="fitCenter" />
+
+                    <ImageView
+                        android:id="@+id/ImageView3_Right"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/splash4"
+                        android:scaleType="fitCenter" />
+                </TableRow>
+
+            </TableLayout>
+
+        </LinearLayout>
+
+        <!-- BOTTOM TITLE (pegado a la versión) -->
+        <TextView
+            android:id="@+id/TextViewBottomTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/app_logo_bottom"
+            android:textColor="@color/logo_color"
+            android:gravity="center"
+            android:textSize="@dimen/logo_size"
+            android:paddingBottom="8dp" />
+
+    </LinearLayout>
+
+    <!-- VERSION (abajo del todo) -->
+    <TextView
+        android:id="@+id/TextViewBottomVersion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/app_version_info"
+        android:textSize="@dimen/version_size"
+        android:textColor="@color/version_color"
+        android:background="@color/version_bkgrd"
+        android:gravity="center"
+        android:padding="6dp"
+        android:lineSpacingExtra="@dimen/version_spacing" />
+
+</LinearLayout>
